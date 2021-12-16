@@ -15,12 +15,38 @@ const app = express()
 app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname, '/public/index.html'))
     rollbar.info('html file served successfully.')
+})
+
+app.get('/main', (req,res)=>{
+    res.sendFile(path.join(__dirname, '/public/main.js'))
+    rollbar.info('main.js file served successfully.')
+})
+
+app.get('/error', (req,res) => {
     try {
         nonExistentFunction();
       } catch (error) {
         console.error(error);
-        // expected output: ReferenceError: nonExistentFunction is not defined
-        // Note - error messages will vary depending on browser
+        rollbar.error('error test')
+      }
+      res.sendStatus(400)
+})
+app.get('/warning', (req,res) => {
+    try {
+        nonExistentFunction();
+      } catch (error) {
+        console.error(error, 'warning error');
+        rollbar.warning('warning')
+        
+      }
+})
+app.get('/critical', (req,res) => {
+    try {
+        nonExistentFunction();
+      } catch (error) {
+        console.error(error, 'critical error');
+        rollbar.critical('critical')
+        
       }
 })
 
