@@ -25,7 +25,7 @@ app.get('/', (req,res)=>{
 })
 
 
-
+app.use(rollbar.errorHandler())
 const port = process.env.PORT || 4545
 
 app.listen(port, () => console.log(`on port ${port}`))
