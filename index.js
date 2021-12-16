@@ -36,7 +36,7 @@ app.get('/warning', (req,res) => {
     try {
         nonExistentFunction();
       } catch (error) {
-        console.error(error, 'warning error');
+        console.error(error);
         rollbar.warning('warning')
         
       }
@@ -45,7 +45,7 @@ app.get('/critical', (req,res) => {
     try {
         nonExistentFunction();
       } catch (error) {
-        console.error(error, 'critical error');
+        console.error(error);
         rollbar.critical('critical')
         
       }
