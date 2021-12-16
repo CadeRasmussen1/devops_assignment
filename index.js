@@ -15,7 +15,16 @@ const app = express()
 app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname, '/public/index.html'))
     rollbar.info('html file served successfully.')
+    try {
+        nonExistentFunction();
+      } catch (error) {
+        console.error(error);
+        // expected output: ReferenceError: nonExistentFunction is not defined
+        // Note - error messages will vary depending on browser
+      }
 })
+
+
 
 const port = process.env.PORT || 4545
 
