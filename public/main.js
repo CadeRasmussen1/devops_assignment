@@ -5,19 +5,19 @@ const critBtn = document.querySelector('#critical-button')
 
         function errHandler(e){
             e.preventDefault()
-            axios.post('/error')
+            axios.get('/error')
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
         }
         function warnHandler(e){
             e.preventDefault()
-            axios.post('/warning')
+            axios.get('/warning')
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
         }
         function critHandler(e){
             e.preventDefault()
-            axios.post('/critical')
+            axios.get('/critical')
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
         }
