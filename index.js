@@ -10,14 +10,15 @@ const express = require('express')
 const path = require('path')
 
 const app = express()
-// app.use(express.json())
+app.use(express.json())
+app.use('/js'.express.static(path.join(__dirname, "public/main.js")))
 
 app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname, '/public/index.html'))
     rollbar.info('html file served successfully.')
 })
 
-app.get('/main', (req,res)=>{
+app.get('/main.js', (req,res)=>{
     res.sendFile(path.join(__dirname, '/public/main.js'))
     rollbar.info('main.js file served successfully.')
 })
