@@ -40,6 +40,7 @@ app.get('/warning', (req,res) => {
         rollbar.warning('warning')
         
       }
+      res.sendStatus(400)
 })
 app.get('/critical', (req,res) => {
     try {
@@ -49,6 +50,7 @@ app.get('/critical', (req,res) => {
         rollbar.critical('critical')
         
       }
+      res.sendStatus(400)
 })
 
 
